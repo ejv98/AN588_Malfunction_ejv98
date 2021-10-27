@@ -1,5 +1,5 @@
 ---
-title: "ejv98_OriginalHomeworkCode_04"
+title: "ejv98_PeerCommentary_nkelley_04"
 output: html_document
 ---
 
@@ -93,8 +93,9 @@ if (!is.null(n2))
 values<- c("z-stat", z, "p value", p, "conf. intervals", ci)
 print(values)
 }
+}
 ```
-
+NK: you needed one more bracket at the end of your function to close it. Otherwise, it seems to work well! 
 <!-- [2] The dataset from Kamilar and Cooper has in it a large number of variables related to life history and body size. For this exercise, the end aim is to fit a simple linear regression model to predict longevity (MaxLongevity_m) measured in months from species’ brain size (Brain_Size_Species_Mean) measured in grams. Do the following for both longevity~brain size and log(longevity)~log(brain size): -->
 
 ```{r}
@@ -123,6 +124,7 @@ ggM1<-ggplot(data = d, aes(x = x, y = y)) + geom_point() + geom_smooth(method = 
 ggM1
 #ggplot of the first model
 ```
+NK: This looks good! I was uncertain if we needed to use M2 or just M1, but I also used M1. 
 
 <!-- Identify and interpret the point estimate of the slope (β1 -->
 <!-- ), as well as the outcome of the test associated with the hypotheses H0: β1 -->
@@ -195,9 +197,10 @@ logM1
 summary(logM1)
 #the r2 is now 0.5751, higher than regular model
 #making the ggplot
-ggM2 <- ggplot(data=info, aes(x=r2,y=r1))+xlab("log(Brain_Size_Species_Mean)")+ylab("log(MaxLongevity_m)")+ geom_point() + geom_smooth(method="lm", fullrange=TRUE)
+ggM2 <- ggplot(data=df2, aes(x=r2,y=r1), xlab("log(Brain_Size_Species_Mean)")+ylab("log(MaxLongevity_m)"))+ geom_point() + geom_smooth(method="lm", fullrange=TRUE)
 ggM2
 ```
+NK: for the ggplot, you had data=info, which I assumed was supposed to be df2? I also adjusted some of the parentheses which seemed to be slightly off. The plot runs now, although if df2 is the wrong info, you'll want to replace that. Something I've found helpful is when you click next to a bracket/parenthese/etc. it highlights the corresponding one. This makes it easier to see which sections are bound together, or if you've forgotten to close something.
 
 ```{r}
 #finding beta0 and beta1 
@@ -247,3 +250,5 @@ predict(logM1, newdata = data.frame(x = 800), interval = "prediction",level = 0.
 
 Looking at your two models, which do you think is better? Why?
 #The log model appears to works better - it gave a higher r2 value, which means a strong linear relationship. 
+
+NK: Your code was overall much better than mine! Great job. I like how you organize your work/annotations as well.  
